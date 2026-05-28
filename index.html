@@ -135,9 +135,76 @@ footer p{font-size:12px;color:var(--muted);}
 .footer-links{display:flex;gap:1rem;}
 .footer-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;}
 .footer-links a:hover{color:var(--purple);}
+
+/* ---- LOADING OVERLAY ---- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(247, 246, 255, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 渦巻きと文字の隙間 */
+}
+
+.vortex-loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top: 5px solid var(--purple);
+  border-right: 5px solid var(--accent);
+  border-bottom: 5px solid var(--green);
+  border-left: 5px solid var(--yellow);
+  animation: spin 0.6s linear infinite;
+}
+
+.loading-text {
+  font-family: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--purple);
+  letter-spacing: 2px;
+  animation: pulse 1s infinite alternate; /* ふわふわ点滅するアニメーション */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
 </style>
 </head>
 <body>
+
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loader-content">
+    <div class="vortex-loader"></div>
+    <div class="loading-text">NOW LOADING...</div>
+  </div>
+</div>
 
 <nav>
   <a class="nav-logo" onclick="showPage('home');return false;" href="#"><span class="logo-dot"></span>VSG</a>
@@ -148,12 +215,11 @@ footer p{font-size:12px;color:var(--muted);}
   </div>
 </nav>
 
-<!-- ===== HOME ===== -->
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-badge">VALORANT Clan</div>
     <h1>Vortex Second<br><span class="highlight">Gaming</span></h1>
-    <h3>Vortex Second Gaming (通称VSG)は、2026年にできた成長中のクランです。<h3>
+    <h3>Vortex Second Gaming (通称VSG)は、2026年にできた成長中のクランです。</h3>
       <text>⠀⠀</text>
     <div class="hero-btns">
       <button class="btn-fill" onclick="showPage('join')">Discordに参加する</button>
@@ -188,10 +254,9 @@ footer p{font-size:12px;color:var(--muted);}
     <div class="footer-logo">VSG — Vortex Second Gaming</div>
     <p>サイト作成：あずき</p>
     <p>© 2026 VSG</p>
-    </div>
+  </footer>
 </div>
-<!-- ===== ABOUT ===== -->
-
+</div>
 <div class="page" id="page-about">
   <div class="about-hero">
     <div class="hero-badge">About VSG</div>
@@ -251,11 +316,9 @@ footer p{font-size:12px;color:var(--muted);}
     <div class="footer-logo">VSG — Vortex Second Gaming</div>
     <p>サイト作成：あずき</p>
     <p>© 2026 VSG</p>
-    </div>
-    </div>
+  </footer>
 </div>
 
-<!-- ===== JOIN ===== -->
 <div class="page" id="page-join">
   <div class="join-hero">
     <div class="hero-badge">Join us</div>
@@ -334,16 +397,34 @@ footer p{font-size:12px;color:var(--muted);}
     <div class="footer-logo">VSG — Vortex Second Gaming</div>
     <p>サイト作成：あずき</p>
     <p>© 2026 VSG</p>
-    </div>
+  </footer>
 </div>
 
 <script>
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  document.getElementById('nav-' + id).classList.add('active');
-  window.scrollTo(0, 0);
+  // すでに開いているページをクリックした場合は何もしない
+  if (document.getElementById('page-' + id).classList.contains('active')) return;
+
+  const overlay = document.getElementById('loading-overlay');
+  
+  // 1. ローディング画面を表示
+  overlay.classList.add('active');
+
+  // 2. 100ms(0.1秒) 〜 500ms(0.5秒) のランダムな時間を計算
+  const randomDelay = Math.floor(Math.random() * 400) + 100;
+
+  // 3. ランダムな時間経過後にページを切り替えてローディングを消す
+  setTimeout(() => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+    
+    // ローディング非表示
+    overlay.classList.remove('active');
+  }, randomDelay);
 }
 </script>
 </body>
