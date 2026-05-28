@@ -87,4 +87,345 @@ nav{background:var(--card);border-bottom:1.5px solid var(--border);padding:0 2re
 .about-hero p{font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.8;}
 
 .about-cards{padding:2rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
-.about-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:2rem;transition:border-color 0.15s
+.about-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:2rem;transition:border-color 0.15s,transform 0.15s;}
+.about-card:hover{border-color:var(--purple-mid);transform:translateY(-2px);}
+.about-card-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1rem;}
+.about-card h3{font-family:'M PLUS Rounded 1c',sans-serif;font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px;}
+.about-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+
+.rules-section{padding:1rem 3rem 3rem;}
+.rules-section h2{font-family:'M PLUS Rounded 1c',sans-serif;font-size:24px;font-weight:800;margin-bottom:1.2rem;color:var(--text);}
+.rule-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);}
+.rule-item:last-child{border-bottom:none;}
+.rule-num{min-width:28px;height:28px;background:var(--purple);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:2px;}
+.rule-text{font-size:14px;color:var(--text);line-height:1.6;}
+
+/* ---- JOIN ---- */
+.join-hero{padding:5rem 3rem 2rem;text-align:center;}
+.join-hero h1{font-family:'M PLUS Rounded 1c',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--text);margin-bottom:0.8rem;line-height:1.2;}
+.join-hero h1 span{color:var(--accent);}
+.join-hero p{font-size:15px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.8;}
+
+.steps-section{padding:2rem 3rem;}
+.steps-section h2{font-family:'M PLUS Rounded 1c',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:1.5rem;}
+.step-card{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:16px;margin-bottom:10px;transition:border-color 0.15s,transform 0.15s;}
+.step-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.step-num{width:36px;height:36px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;}
+.step-body h3{font-size:15px;font-weight:700;color:var(--text);}
+.step-body p{font-size:13px;color:var(--muted);margin-top:2px;}
+
+.req-section{padding:0 3rem 2rem;}
+.req-section h2{font-family:'M PLUS Rounded 1c',sans-serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:1.2rem;}
+.req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.req-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:center;gap:12px;}
+.req-icon{width:36px;height:36px;border-radius:10px;background:var(--purple-light);color:var(--purple);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.req-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.5px;text-transform:uppercase;}
+.req-val{font-size:14px;font-weight:700;color:var(--text);}
+
+.discord-banner{margin:2rem 3rem 3rem;background:var(--purple);border-radius:20px;padding:3rem;text-align:center;color:#fff;}
+.discord-banner h2{font-family:'M PLUS Rounded 1c',sans-serif;font-size:28px;font-weight:800;margin-bottom:8px;}
+.discord-banner p{font-size:14px;opacity:0.85;margin-bottom:1.5rem;line-height:1.6;}
+.btn-white{background:#fff;color:var(--purple);border:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;padding:12px 28px;border-radius:24px;cursor:pointer;transition:opacity 0.15s,transform 0.1s;}
+.btn-white:hover{opacity:0.9;transform:translateY(-1px);}
+
+/* ---- FOOTER ---- */
+footer{background:var(--card);border-top:1.5px solid var(--border);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.footer-logo{font-family:'M PLUS Rounded 1c',sans-serif;font-size:16px;font-weight:800;color:var(--purple);}
+footer p{font-size:12px;color:var(--muted);}
+.footer-links{display:flex;gap:1rem;}
+.footer-links a{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.footer-links a:hover{color:var(--purple);}
+
+/* ---- LOADING OVERLAY ---- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(247, 246, 255, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.loading-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* 渦巻きと文字の隙間 */
+}
+
+.vortex-loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top: 5px solid var(--purple);
+  border-right: 5px solid var(--accent);
+  border-bottom: 5px solid var(--green);
+  border-left: 5px solid var(--yellow);
+  animation: spin 0.6s linear infinite;
+}
+
+.loading-text {
+  font-family: 'Nunito', 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--purple);
+  letter-spacing: 2px;
+  animation: pulse 1s infinite alternate; /* ふわふわ点滅するアニメーション */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loader-content">
+    <div class="vortex-loader"></div>
+    <div class="loading-text">NOW LOADING...</div>
+  </div>
+</div>
+
+<nav>
+  <a class="nav-logo" onclick="showPage('home');return false;" href="#"><span class="logo-dot"></span>VSG</a>
+  <div class="nav-links">
+    <a onclick="showPage('home');return false;" href="#" id="nav-home" class="active">ホーム</a>
+    <a onclick="showPage('about');return false;" href="#" id="nav-about">VSGとは</a>
+    <a onclick="showPage('join');return false;" href="#" id="nav-join">参加する</a>
+  </div>
+</nav>
+
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-badge">VALORANT Clan</div>
+    <h1>Vortex Second<br><span class="highlight">Gaming</span></h1>
+    <h3>Vortex Second Gaming (通称VSG)は、2026年にできた成長中のクランです。</h3>
+      <text>⠀⠀</text>
+    <div class="hero-btns">
+      <button class="btn-fill" onclick="showPage('join')">Discordに参加する</button>
+      <button class="btn-outline" onclick="showPage('about')">もっと見る</button>
+    </div>
+    <div class="chips-row">
+      <div class="chip"><span class="chip-dot" style="background:#7b5ea7"></span>初心者歓迎</div>
+      <div class="chip"><span class="chip-dot" style="background:#5dc8a5"></span>雑談OK</div>
+      <div class="chip"><span class="chip-dot" style="background:#f5c842"></span>なんでも話せる</div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <h2>みんなの数字(?)</h2>
+    <div class="vibe-grid">
+      <div class="vibe-card"><div class="vibe-num">∞</div><div class="vibe-label">楽しさ無限大...!?</div></div>
+      <div class="vibe-card"><div class="vibe-num">2026</div><div class="vibe-label">設立年</div></div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0;">
+    <div class="section-label">Activity</div>
+    <h2>最近の活動</h2>
+      <div class="activity-card">
+        <div class="act-icon green"><i class="ti ti-message-circle"></i></div>
+          <div class="act-title">雑談チャンネル<span class="act-tag tag-fun">いろいろ</span></div>
+          <div class="act-desc">ゲームの話だけじゃなくてアニメや音楽の話もOK。なんでも話せる場所です。</div>
+          <div class="act-date">毎日</div>
+        </div>
+<h1>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</h1>
+  <footer>
+    <div class="footer-logo">VSG — Vortex Second Gaming</div>
+    <p>サイト作成：あずき</p>
+    <p>© 2026 VSG</p>
+  </footer>
+</div>
+</div>
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="hero-badge">About VSG</div>
+    <h1>VSGって<br><span>どんなとこ？</span></h1>
+    <p>ゲームを楽しむ人たちが集まるクラン。2026年に創設されました。</p>
+  </div>
+
+  <div class="about-cards">
+    <div class="about-card">
+      <div class="about-card-icon" style="background:var(--purple-light);color:var(--purple);"><i class="ti ti-heart"></i></div>
+      <h3>弱くても大丈夫</h3>
+      <p>「お前弱すぎ」なんてない。自分のペースでVALORANTを楽しめる環境があります。</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon" style="background:var(--accent-light);color:var(--accent);"><i class="ti ti-bolt"></i></div>
+      <h3>本気は出す</h3>
+      <p>コンペでは本気。どんどんランクを上げていきましょう。</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon" style="background:var(--green-light);color:var(--green);"><i class="ti ti-door-enter"></i></div>
+      <h3>誰でも入れる</h3>
+      <p>アイアンでもシルバーでも関係なし。VALORANTが好きで、複数人と楽しみたい人なら誰でもウェルカム。</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon" style="background:var(--yellow-light);color:#a37c00;"><i class="ti ti-message-2"></i></div>
+      <h3>ゲーム以外も話せる</h3>
+      <p>アニメ・音楽・飯の話も大歓迎。</p>
+    </div>
+  </div>
+
+  <div class="rules-section">
+    <h2>ルール</h2>
+    <div class="rule-item">
+      <div class="rule-num">1</div>
+      <div class="rule-text"><strong>サブアカウントについて</strong> 基本的にサブアカウントは許可されていません。サブアカウントを使用してVSGに参加する際は必ず 意見箱 にてお知らせください。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">2</div>
+      <div class="rule-text"><strong>重複募集について</strong> 同じパーティで別々にメンバーで募集を2以上かけることは基本的に許可されていません。</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">3</div>
+      <div class="rule-text"><strong>運営募集について</strong> 運営募集を実施する際はメンションを行います。《募集通知OK》を選択していない場合、通知されませんのでご注意ください。
+</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-num">4</div>
+      <div class="rule-text"><strong>ランクについて</strong> ランクは人それぞれです。ランクなしや低い人もいれば、高い人もいます。ランクが低い人への差別、軽蔑はおやめください。</div>
+      </div>
+    <div class="rule-item">
+      <div class="rule-num">5</div>
+      <div class="rule-text"><strong>他サーバーについて</strong> 本サーバーにて募集されたパーティの一部が別のサーバーで途中からプレイすることや、他サーバーに誘導した後にプレイを開始するのはおやめください。また、宣伝目的の加入は禁止です。</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">VSG — Vortex Second Gaming</div>
+    <p>サイト作成：あずき</p>
+    <p>© 2026 VSG</p>
+  </footer>
+</div>
+
+<div class="page" id="page-join">
+  <div class="join-hero">
+    <div class="hero-badge">Join us</div>
+    <h1>いっしょに<br><span>加入しよう</span></h1>
+    <p>参加はDiscordから。難しい手続きは一切なし。入ったらすぐ仲間になれます。</p>
+  </div>
+
+  <div class="steps-section">
+    <h2>参加の流れ</h2>
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>DiscordのリンクからJoin</h3>
+        <p>下のボタンからDiscordサーバーに入ってください。参加の承認をお待ちください。1~5時間程で承認されます。</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>#自己紹介 チャンネルに書いてみる</h3>
+        <p>一言でOK。「よろしくお願いします」だけでもOKです。</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>一緒にやる人を探す/雑談</h3>
+        <p>何からでも、会話を始めてみましょう!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="req-section">
+    <h2>こんな人、歓迎！</h2>
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="req-icon"><i class="ti ti-device-gamepad"></i></div>
+        <div>
+          <div class="req-label">ゲーム</div>
+          <div class="req-val">VALORANT プレイヤー</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon"><i class="ti ti-map-pin"></i></div>
+        <div>
+          <div class="req-label">サーバー</div>
+          <div class="req-val">日本 (JP) 推奨</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon"><i class="ti ti-mood-smile"></i></div>
+        <div>
+          <div class="req-label">条件なし</div>
+          <div class="req-val">基本誰でもOK</div>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-icon"><i class="ti ti-star"></i></div>
+        <div>
+          <div class="req-label">ランク制限</div>
+          <div class="req-val">なし！誰でも！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="discord-banner">
+  <h2>Discord に参加する</h2>
+  <p>今すぐ入れます。まずは覗いてみるだけでもOK！</p>
+  <a href="https://discord.gg/PWu4U5tnGJ" target="_blank" rel="noopener noreferrer">
+    <button class="btn-white">Join Discord</button>
+  </a>
+</div>
+
+  <footer>
+    <div class="footer-logo">VSG — Vortex Second Gaming</div>
+    <p>サイト作成：あずき</p>
+    <p>© 2026 VSG</p>
+  </footer>
+</div>
+
+<script>
+function showPage(id) {
+  // すでに開いているページをクリックした場合は何もしない
+  if (document.getElementById('page-' + id).classList.contains('active')) return;
+
+  const overlay = document.getElementById('loading-overlay');
+  
+  // 1. ローディング画面を表示
+  overlay.classList.add('active');
+
+  // 2. 100ms(0.1秒) 〜 500ms(0.5秒) のランダムな時間を計算
+  const randomDelay = Math.floor(Math.random() * 400) + 100;
+
+  // 3. ランダムな時間経過後にページを切り替えてローディングを消す
+  setTimeout(() => {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+    
+    // ローディング非表示
+    overlay.classList.remove('active');
+  }, randomDelay);
+}
+</script>
+</body>
+</html>
